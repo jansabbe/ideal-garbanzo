@@ -3,8 +3,8 @@ interface Props {
 	title: string;
 }
 
+const {BASE_URL} = import.meta.env;
 const { title } = Astro.props;
-const basePath = import.meta.env.BASE_URL;
 
 ---
 
@@ -14,32 +14,12 @@ const basePath = import.meta.env.BASE_URL;
 		<meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{title}</title>
-        <style set:html={`
-            @font-face {
-                font-family: 'Merriweather';
-                font-style: normal;
-                font-weight: 400;
-                font-display: fallback;
-                src: url('${basePath}/fonts/merriweather-regular.woff2') format('woff2');
-            }
-            @font-face {
-                font-family: 'Merriweather';
-                font-style: normal;
-                font-weight: 700;
-                font-display: fallback;
-                src: url('${basePath}/fonts/merriweather-bold.woff2') format('woff2');
-            }
-            @font-face {
-                font-family: 'Merriweather';
-                font-style: normal;
-                font-weight: 900;
-                font-display: fallback;
-                src: url('${basePath}/fonts/merriweather-black.woff2') format('woff2');
-            }
-        `}/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=fallback" rel="stylesheet">
         <meta name="description" content="SoCraTes Unconference in Belgium" />
-        <link rel="icon" href={`${basePath}/favicon.ico`} />
-        <link rel="apple-touch-icon" href={`${basePath}/apple-touch-icon.png`} />
+        <link rel="icon" href={`${BASE_URL}/favicon.ico`} />
+        <link rel="apple-touch-icon" href={`${BASE_URL}/apple-touch-icon.png`} />
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body>
@@ -50,10 +30,9 @@ const basePath = import.meta.env.BASE_URL;
     @font-face {
         font-family: 'Fallback';
         src: local(Georgia);
-        size-adjust: 106%;
-        ascent-override: normal;
-        descent-override: 22%;
-        line-gap-override: normal;
+        size-adjust: 105%;
+        ascent-override: 90%;
+        descent-override: 24%;
     }
 	:root {
         --font-family: 'Merriweather', 'Fallback', system-ui, sans-serif;
